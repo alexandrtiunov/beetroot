@@ -12,7 +12,7 @@ function MultipleOfFive($array)
         if (($array[$i]%5) == 0){
         echo 'Значения кратные  пяти в Вашем массиве: это ' . $array[$i] . '<br>';
         }else {}
-        return $array ;
+        return ' ';
 
 }
 
