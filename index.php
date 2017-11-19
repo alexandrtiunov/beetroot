@@ -1,19 +1,21 @@
 <?php
 
-$array = [92, 'name' => 'Alex', 'surname' => 'Sergey', 17, 46, 2, 15, 43, 65, 86, 27];
+$array = [92, 15, 46, 25, 15, 43, 65, 86, 27];
 
 /**
  * This function count elements of array
- *
  * @param $array
- * @return int
  */
-function arrayCount($array)
+function MultipleOfFive($array)
 {
-    $result = count($array);
-    return $result;
+    for ($i = 0; $i < count($array); $i++)
+        if (($array[$i]%5) == 0){
+        echo 'Значения кратные  пяти в Вашем массиве: это ' . $array[$i] . '<br>';
+        }else {}
+        return $array ;
+
 }
 
-echo 'в массиве ' . arrayCount($array) . ' элементов!';
+echo MultipleOfFive($array);
 
 ?>
