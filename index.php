@@ -1,10 +1,6 @@
 <?php
 
 $array = [92, -15, 46, 25, -43, -65, 86, -27];
-$fileName = 'positive values.txt';
-$fileName1 = 'not positive values.txt';
-
-
 
 /**
  * This function sorting values to the files
@@ -25,6 +21,6 @@ function sortValues($array)
     }
 }
 
-
+echo sortValues($array);
 
 ?>
