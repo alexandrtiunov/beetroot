@@ -3,7 +3,7 @@
 $array = [92, 15, 46, 25, 15, 43, 65, 86, 27];
 
 /**
- * This function count elements of array
+ * This function MultipleOfFive
  * @param $array
  */
 function MultipleOfFive($array)
