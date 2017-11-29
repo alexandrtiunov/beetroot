@@ -1,42 +1,45 @@
+<?php
 
-<!DOCTYPE html>
-<html>
-    <head>
-
-
-    </head>
-<body>
-<div id="reg">
-    <table>
-        <tr>
-            <td width="300" height="300" align="right">
-                <form action="registration.php" method="POST" enctype="multipart/form-data">
-                    <p>
-                        Логин: <input type="text" name="login" required="required">
-                    </p>
-                    <p>
-                        Имя: <input type="text" name="name" required="required">
-                    </p>
-                    <p>
-                        Email: <input type="email" name="email" required="required">
-                    </p>
-                    <p>
-                        Пароль: <input type="password" name="password" required="required">
-                    </p>
-                    <p>
-                        Photo: <input type="file" name="avatar" required="required">
-                    </p>
-                    <p>
-                       <button type="submit">Зарегистрироваться</button>
-                    </p>
-                </form>
-            </td>
-        </tr>
-    </table>
-</div>
-
-</body>
+//define(myFavoriteMonth, 'june');
+//
+//$month = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'november', 'december'];
+//
+//
+//    foreach ($month as $value){
+//        if ($value == myFavoriteMonth)
+//            echo 'My favorite month of the year it\'s - ' . $value;}
 
 
+$numbers = []; // определяем пустой массив
 
-</html>
+for ($i = 0; $i <= 100; $i++) { // делаем циклом for 100 проходов по массиву
+    $numbers [$i] = rand(0, 9); // и вносим в него элементы в диапазоне от 0 до 9 рандомом
+}
+echo '<pre>';
+print_r($numbers);
+echo '</pre>';
+
+/**
+ * This function write numbers from array through one
+ *
+ * @param array $numbers
+ * @return mixed
+ */
+function writeNumbers($numbers)
+{
+file_put_contents('numbers.txt', '');
+    foreach ($numbers as $key => $value) { // проходим по всем ключам массива
+        if (($key % 2) == 0) {  // выбираем ключи через один
+            file_put_contents('numbers.txt', $value . ' ', FILE_APPEND | LOCK_EX); // записываем в файл
+        }
+    }
+    return $value;
+}
+writeNumbers($numbers);
+
+
+?>
+
+
+
+
