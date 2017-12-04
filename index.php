@@ -1,67 +1,72 @@
 <?php
+/*
+const HOST = 'localhost';
+const USER = 'root';
+const PASS = '';
+const DB = 'hw_db';
 
-//// текст, который записан в файл
-//$text = 'Hello';
-//// создание файла с названием а типом
-//$fp = fopen('file.txt', 'a');
-//// запись текстс в файл
-//fwrite($fp, $text);
-//// ]закрытие файла
-//fclose($fp);
+$db = @mysqli_connect(HOST, USER, PASS, DB);
+if ($db -> connect_errno){
+    exit('Ошибка соеденения с БД');
+}else {
+    echo 'connection OK <br>';
+}
+mysqli_set_charset($db,'utf8');
+ // создаем массив с названиями полей и их значениями, которые необходимо внести в БД
+$product [] = "INSERT INTO product (maker, model, type) VALUES ('Apple iMac', 'MK142UA/A', 'PC')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('Lenovo', '300-20ISH', 'PC')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('Acer Aspire', 'TC-780', 'PC')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('ASUS', 'D820MT', 'PC')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('HP', 'Y7Z52EA', 'Laptop')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('Lenovo', '20HR002KRT', 'Laptop')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('HP LaserJet', 'G3Q66A', 'Printer')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('Epson', 'C11CF72403', 'Laptop')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('Epson', '3243SDF', 'Laptop')";
+$product[] = "INSERT INTO product (maker, model, type) VALUES ('HP', '34534GDFG', 'Printer')";
+// проходим по массиву
+foreach ($product as $key => $value){
+    $res_product = mysqli_query($db, $value); // вносим данные в переменную
+}
 
-// если нужно добавть новый текст в файл file.txt не дублируя весь код используем функцию file_put_contents()
-//file_put_contents('file.txt', 'Привет!', FILE_APPEND | LOCK_EX);
-// вывод данных file.txt в браузере
-//echo file_get_contents('file.txt', 'offset = 0');
+$pc[] = "INSERT INTO pc (code, model, speed, ram, hd, cd, price) VALUES ('1', 'MK142UA', '2.7ГГц', '8ГБ',
+'1ТБ', '12x', '1000')";
+$pc[] = "INSERT INTO pc (code, model, speed, ram, hd, cd, price) VALUES ('2', '300-20ISH', '3.7ГГц', '4ГБ',
+'500ГБ', '24x', '500')";
+$pc[] = "INSERT INTO pc (code, model, speed, ram, hd, cd, price) VALUES ('3', 'TC-780', '3.3ГГц', '4ГБ',
+'1ТБ', '24x', '400')";
+$pc[] = "INSERT INTO pc (code, model, speed, ram, hd, cd, price) VALUES ('4', 'D820MT', '3.2ГГц', '4ГБ',
+'500ГБ', '8x', '358')";
 
+foreach ($pc as $key => $value){
+    $res_pc = mysqli_query($db, $value);
+}
 
+$laptop[] = "INSERT INTO laptop (code, model, speed, ram, hd, screen, price) VALUES ('1', 'Y7Z52EA', '2.5ГГц', '4ГБ',
+'500ГБ', '15', '700')";
+$laptop[] = "INSERT INTO laptop (code, model, speed, ram, hd, screen, price) VALUES ('2', '20HR002KRT', '2.7ГГц', '8ГБ',
+'512ГБ', '17', '1000')";
+$laptop[] = "INSERT INTO laptop (code, model, speed, ram, hd, screen, price) VALUES ('3', '3243SDF', '2.1ГГц', '4ГБ',
+'512ГБ', '15', '500')";
+$laptop[] = "INSERT INTO laptop (code, model, speed, ram, hd, screen, price) VALUES ('4', 'ASDFVS234', '2.8ГГц', '1ГБ',
+'512ГБ', '21.5', '350')";
 
+foreach ($laptop as $key => $value){
+    $res_laptop = mysqli_query($db, $value);
+}
 
-//$array = [92,'name' => 'Alex', 'surname' => 'Sergey', 17, 46, 2, 15];
-//
-//var_dump(array_key_exists('name', $array));
+$printer[] = "INSERT INTO printer (code, model, color, type, price) VALUE ('1', 'G3Q66A', 'n', 'Laser', '500')";
+$printer[] = "INSERT INTO printer (code, model, color, type, price) VALUE ('2', 'C11CF72403', 'y', 'Jet', '700')";
+$printer[] = "INSERT INTO printer (code, model, color, type, price) VALUE ('3', '34534GDFG', 'y', 'Laser', '450')";
 
-//$array = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
-//var_dump(array_unique($array));
+foreach ($printer as $key => $value){
+    $res_printer = mysqli_query($db, $value);
+}
 
-
-//asort($array);
-//var_dump($array);
-//foreach ($array as $key => $value){
-//    echo "$key => $value<br>";
-//}
-
-
-//$a = 5;
-//$b = 10;
-//
-//echo $a + $b;
-
-
-//$array = [1, 2, 3, 4, 'name' => 'Alex', 5, 6, 7, 8, 9, 'users' => ['Vadim', 'Alex', 'Rasul']];
-
-//for ($i = 0; $i < 15; $i++)
-//    var_dump($array[$i]);
-
-/* может работать с ассиативными массивами
-foreach ($array as $key => $value) {
-
-    var_dump($key);
-    var_dump($value);
-}*/
-
-/*foreach ($array as $key => $value) {
-    if (is_array($value)) {
-        foreach ($value as $key => $value) {
-            ; // is_array Если мы хотим вывести массив в массиве
-            echo($value . '<br/>');
-        }
-    }
-}*/
-
-/*while ($i < 5){
-    $count = $i++;
-    var_dump ($i);
-}*/
-
+if ($res_product && $res_pc && $res_laptop && $res_printer) { // Проверяем если данные в переменных true вносим все
+                                                              //данные в БД одновременно
+    echo 'данные занесены в БД';
+}else {
+    echo 'Ошибка! Данные не внесены в БД';
+}
+*/
 ?>
