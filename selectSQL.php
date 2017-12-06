@@ -47,7 +47,7 @@ print_r($data3);
 echo '</pre>';
 echo '<hr>';
 echo 'Уражнение 5: Найдите номер модели, скорость и размер жесткого диска ПК, имеющих 12х или 24х CD и цену менее 600 долларов.';
-$select4 = "SELECT `model`, `speed`, `hd` FROM `pc` WHERE `price` < '600' AND (`cd` = '12x' OR '24x');";
+$select4 = "SELECT `model`, `speed`, `hd` FROM `pc` WHERE `price` < '600' AND (`cd` = '12x' OR `cd` = '24x');";
 $res4 = mysqli_query($db, $select4);
 $data4 = mysqli_fetch_all($res4, MYSQLI_ASSOC);
 echo '<pre>';
