@@ -11,21 +11,18 @@
     <table>
         <tr>
             <td width="200" height="200" align="right">
-                <form action="feedback.php" method="post" enctype="multipart/form-data">
+                <form action="action.php" method="post" enctype="multipart/form-data">
+<!--                    <p>-->
+<!--                        Email: <input type="email" name="email" required>-->
+<!--                    </p>-->
                     <p>
-                        Имя: <input type="text" name="name" required>
-                    </p>
-                    <p>
-                        Email: <input type="email" name="email" required>
-                    </p>
-                    <p>
-                        Текст: <input type="text" name="text" maxlength="200" required>
+                        Текст: <input type="text" name="text" maxlength="200">
                     </p>
                     <p>
                         <input type="file" name="file">
                     </p>
                     <p>
-                        <button type="submit">Отправить заявку</button>
+                        <button type="submit">Отправить</button>
                     </p>
                 </form>
             </td>
@@ -33,3 +30,6 @@
     </table>
 </body>
 </html>
+
+
+
