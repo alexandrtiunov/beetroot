@@ -1,67 +1,160 @@
 <?php
 
-//// текст, который записан в файл
-//$text = 'Hello';
-//// создание файла с названием а типом
-//$fp = fopen('file.txt', 'a');
-//// запись текстс в файл
-//fwrite($fp, $text);
-//// ]закрытие файла
-//fclose($fp);
+class shopProduct{
+    protected $name;
+    protected $owner;
+    protected $type;
+    protected $price;
+    protected $discount = 20;
 
-// если нужно добавть новый текст в файл file.txt не дублируя весь код используем функцию file_put_contents()
-//file_put_contents('file.txt', 'Привет!', FILE_APPEND | LOCK_EX);
-// вывод данных file.txt в браузере
-//echo file_get_contents('file.txt', 'offset = 0');
+    public function __construct($name, $owner, $type, $price)
+    {
+        $this->name = $name;
+        $this->owner = $owner;
+        $this->type = $type;
+        $this->price = $price;
+    }
+    public function getInformation (){
+        return "Название магазана: " . $this->name . "<br>" . "Издатель: " . $this->owner . "<br>" . "Тип магазина: " .
+            $this->type . "<br>" . "Цена: "  . $this->price . "<br>";
+    }
+    public function priceWithDiscount(){
+        $result = $this->price - ($this->price * $this->discount / 100) ;
+        return "Стоимость товара со скидкой: " . $result;
+    }
+
+}
+class BookProduct extends shopProduct{
+    private $countBook;
+    public function __construct($name, $owner, $type, $price, $countBook)
+    {
+        parent::__construct($name, $owner, $type, $price);
+        $this->countBook = $countBook;
+    }
+
+    public function getInformation()
+    {
+        $result = parent::getInformation();
+        return $result . "Колличество страниц в книге: " . $this->countBook;
+    }
+}
+class CdProduct extends shopProduct{
+    private $typeCD;
+    public function __construct($name, $owner, $type, $price, $typeCD)
+    {
+        parent::__construct($name, $owner, $type, $price);
+        $this->typeCD = $typeCD;
+    }
+    public function getInformation()
+    {
+        $result = parent::getInformation();
+        return $result . "Тип диска: " . $this->typeCD;
+    }
+
+}
+
+$book = new BookProduct ('Книжка', 'Пушкин А.С.', 'Книжный магазин', '230', '650');
+$CD = new CdProduct('Цифра', '1C', 'Магазин по продаже дисков', '1500', 'DVD');
+
+echo $book->getInformation();
+echo '<br>' . $book->priceWithDiscount();
+echo '<hr>';
+echo $CD->getInformation();
+echo '<br>' . $CD->priceWithDiscount();
 
 
 
 
-//$array = [92,'name' => 'Alex', 'surname' => 'Sergey', 17, 46, 2, 15];
+
+//interface ITransport{
+//    public function getPrice();
+//    public function getSomeInformation();
+//}interface ITransportTwo{
+//    public function getTest();
+//}
 //
-//var_dump(array_key_exists('name', $array));
-
-//$array = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
-//var_dump(array_unique($array));
-
-
-//asort($array);
-//var_dump($array);
-//foreach ($array as $key => $value){
-//    echo "$key => $value<br>";
+//abstract class Transport implements ITransport, ITransportTwo {
+//    protected $brand ;
+//    protected $speed;
+//    protected $color;
+//
+//    function __construct($brand, $speed, $color)
+//    {
+//        $this->brand = $brand;
+//        $this->speed = $speed;
+//        $this->color = $color;
+//        //$this->fuel = $fuel;
+//    }
+//
+////    function __destruct()
+////    {
+////        print 'Удалится' . $this->brand;
+////    }
+//
+//    public function getSomeInformation(){
+//        return "Brand: " . $this->brand . "<br>" . "Speed: " . $this->speed . "<br>" . "Color: " . $this->color . "<br>";
+//    }
+//    public function setBrand($brand){
+//        return $this->brand = $brand;
+//    }
+//}
+//class Car extends Transport{
+//    private $fuel;
+//    public function __construct($brand, $speed, $color, $fuel)
+//    {
+//        parent::__construct($brand, $speed, $color);
+//        $this->fuel = $fuel;
+//    }
+//    public function getSomeInformation(){
+//        $result = parent::getSomeInformation();
+//        return "<b>Характеристики машины: </b><br>" . $result . "Fuel: " .  $this->fuel;
+//    }
+//    public function getPrice()
+//    {
+//        // TODO: Implement getPrice() method.
+//    }
+//
+//    function getBrand()
+//    {
+//        return $this->brand;
+//    }
+//}
+//class Bicycle extends Transport{
+//    private $type;
+//    public function __construct($brand, $speed, $color, $type)
+//    {
+//        parent::__construct($brand, $speed, $color);
+//        $this->type = $type;
+//    }
+//    public function getSomeInformation(){
+//        $result = parent::getSomeInformation();
+//        return "<b>Характеристики велосипеда: </b><br>" . $result . "Type: " .  $this->type;
+//    }
+//    public function getPrice()
+//    {
+//        // TODO: Implement getPrice() method.
+//    }
+//}
+//
+//$transportCollection = [];
+//
+//$transportCollection [] = new Car('Audi', 300, 'Black', 20);
+//$transportCollection [] =  new Car('Ford', 200, 'Red', 10);
+//$transportCollection [] = new Car('BMW', 350, 'White', 35);
+//
+//$transportCollection [] = new Bicycle('Oskar', '30', 'yellow', 'Детский');
+//$transportCollection [] = new Bicycle('Oskar2', '20', 'blue', 'Взрослый');
+//$transportCollection [] = new Bicycle('Oskar3', '45', 'black', 'Взрослый');
+//
+//foreach ($transportCollection as $object){
+//    showObjectInformation($object);
+//}
+//function showObjectInformation(Transport $object){
+//    echo '<p>' . $object->getSomeInformation();
 //}
 
 
-//$a = 5;
-//$b = 10;
-//
-//echo $a + $b;
 
 
-//$array = [1, 2, 3, 4, 'name' => 'Alex', 5, 6, 7, 8, 9, 'users' => ['Vadim', 'Alex', 'Rasul']];
-
-//for ($i = 0; $i < 15; $i++)
-//    var_dump($array[$i]);
-
-/* может работать с ассиативными массивами
-foreach ($array as $key => $value) {
-
-    var_dump($key);
-    var_dump($value);
-}*/
-
-/*foreach ($array as $key => $value) {
-    if (is_array($value)) {
-        foreach ($value as $key => $value) {
-            ; // is_array Если мы хотим вывести массив в массиве
-            echo($value . '<br/>');
-        }
-    }
-}*/
-
-/*while ($i < 5){
-    $count = $i++;
-    var_dump ($i);
-}*/
 
 ?>
