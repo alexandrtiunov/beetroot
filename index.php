@@ -2,22 +2,33 @@
 
 class shopProduct{
     protected $name;
-    protected $owner;
+    protected $izdat;
+    protected $author;
     protected $type;
+    protected $bookName;
+    protected $countPages;
+    protected $typeDisk;
     protected $price;
-    protected $discount = 20;
+    protected $discount;
+    protected $class;
 
-    public function __construct($name, $owner, $type, $price)
+    public function __construct($row)
     {
-        $this->name = $name;
-        $this->owner = $owner;
-        $this->type = $type;
-        $this->price = $price;
+        $this->name = $row ['name'];
+        $this->izdat = $row ['izdat'];
+        $this->author = $row ['author'];
+        $this->type = $row ['type'];
+        $this->bookName = $row ['bookName'];
+        $this->countPages = $row ['countPages'];
+        $this->typeDisk = $row ['typeDisk'];
+        $this->price = $row ['price'];
+        $this->discount = $row ['discount'];
+        $this->class = $row ['class'];
     }
-    public function getInformation (){
-        return "Название магазана: " . $this->name . "<br>" . "Издатель: " . $this->owner . "<br>" . "Тип магазина: " .
-            $this->type . "<br>" . "Цена: "  . $this->price . "<br>";
-    }
+//    public function getInformation (){
+//        return "Название магазана: " . $this->name . "<br>" . "Издатель: " . $this->owner . "<br>" . "Тип магазина: " .
+//            $this->type . "<br>" . "Цена: "  . $this->price . "<br>";
+//    }
     public function priceWithDiscount(){
         $result = $this->price - ($this->price * $this->discount / 100) ;
         return "Стоимость товара со скидкой: " . $result;
@@ -25,42 +36,36 @@ class shopProduct{
 
 }
 class BookProduct extends shopProduct{
-    private $countBook;
-    public function __construct($name, $owner, $type, $price, $countBook)
-    {
-        parent::__construct($name, $owner, $type, $price);
-        $this->countBook = $countBook;
-    }
 
     public function getInformation()
     {
-        $result = parent::getInformation();
-        return $result . "Колличество страниц в книге: " . $this->countBook;
+        return "Название магазана: " . $this->name . "<br>" .
+            "Издатель: " . $this->izdat . "<br>" .
+            "Автор: " . $this->author . "<br>" .
+            "Тип магазина: " . $this->type . "<br>" .
+            "Название книги: " . $this->bookName . "<br>" .
+            "Количество страниц: " . $this->countPages . "<br>" .
+            "Цена: "  . $this->price . "<br>" .
+            "Скидка: " . $this->discount . "%" . "<br>" ;
+
     }
 }
 class CdProduct extends shopProduct{
-    private $typeCD;
-    public function __construct($name, $owner, $type, $price, $typeCD)
-    {
-        parent::__construct($name, $owner, $type, $price);
-        $this->typeCD = $typeCD;
-    }
     public function getInformation()
     {
-        $result = parent::getInformation();
-        return $result . "Тип диска: " . $this->typeCD;
-    }
+        return "Название магазана: " . $this->name . "<br>" .
+            "Издатель: " . $this->izdat . "<br>" .
+            //"Автор: " . $this->author . "<br>" .
+            "Тип магазина: " . $this->type . "<br>" .
+            "Название книги: " . $this->bookName . "<br>" .
+            "Тип диска: " . $this->typeDisk . "<br>" .
+            "Цена: "  . $this->price . "<br>" .
+            "Скидка: " . $this->discount . "%" . "<br>" ;
 
+    }
 }
 
-$book = new BookProduct ('Книжка', 'Пушкин А.С.', 'Книжный магазин', '230', '650');
-$CD = new CdProduct('Цифра', '1C', 'Магазин по продаже дисков', '1500', 'DVD');
 
-echo $book->getInformation();
-echo '<br>' . $book->priceWithDiscount();
-echo '<hr>';
-echo $CD->getInformation();
-echo '<br>' . $CD->priceWithDiscount();
 
 
 
