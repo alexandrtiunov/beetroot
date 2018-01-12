@@ -1,5 +1,85 @@
 <?php
 
+$a = 'Доброе утро';
+$b = 'дамы';
+$c = 'и господа';
+echo $a . " " . $b . " " . $c;
+
+echo '<br>';
+
+
+$array = [1, 3, 4, 5, 9];
+$array2 = [4, 56, 43, 76, 34];
+
+array_push($array, "'element' => 'name'");
+$array['element'] = 'name';
+
+
+echo '<pre>';
+var_dump($array);
+
+echo '<br>';
+
+unset($array2[0]);
+
+echo '<pre>';
+var_dump($array2);
+
+echo '<br>';
+
+echo '<pre>';
+var_dump($array[2], $array2[2]);
+
+echo '<br>';
+
+echo '<pre>';
+var_dump($array, $array2);
+
+echo '<br>';
+
+echo 'Колличество элементов в массиве: ' . count($array);
+echo '<br>';
+echo 'Колличество элементов в массиве: ' . count($array2);
+
+echo '<br>';
+
+CONST MIN = 10;
+CONST MAX = 50;
+//define("MAX",10);
+
+$x = 50;
+
+if ($x > MIN && $x < MAX) {
+    echo '+';
+} elseif ($x == MIN || $x == MAX) {
+    echo '+-';
+} else {
+    echo '-';
+}
+
+echo '<br>';
+
+$count = 99;
+/**
+ * Description
+ *
+ * @param int $count
+ * @param int (optional) $count
+ */
+function getSquare($count)
+{
+
+    for ($i = 1; $i < $count; $i++) {
+        $squre = pow($i,2);
+        echo '<br>';
+        echo $squre;
+    }
+}
+echo getSquare($count);
+
+
+
+
 //// текст, который записан в файл
 //$text = 'Hello';
 //// создание файла с названием а типом
