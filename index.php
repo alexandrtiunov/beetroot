@@ -1,67 +1,78 @@
 <?php
 
-//// текст, который записан в файл
-//$text = 'Hello';
-//// создание файла с названием а типом
-//$fp = fopen('file.txt', 'a');
-//// запись текстс в файл
-//fwrite($fp, $text);
-//// ]закрытие файла
-//fclose($fp);
+// Задача 3: Меню на сайте
 
-// если нужно добавть новый текст в файл file.txt не дублируя весь код используем функцию file_put_contents()
-//file_put_contents('file.txt', 'Привет!', FILE_APPEND | LOCK_EX);
-// вывод данных file.txt в браузере
-//echo file_get_contents('file.txt', 'offset = 0');
-
-
-
-
-//$array = [92,'name' => 'Alex', 'surname' => 'Sergey', 17, 46, 2, 15];
+//$menu = ['Кнопка1', 'Кнопка2', 'Кнопка3', 'Кнопка4', 'Кнопка5', 'Кнопка6', 'Кнопка7', 'Кнопка8', 'Кнопка9', 'Кнопка10'];
 //
-//var_dump(array_key_exists('name', $array));
-
-//$array = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
-//var_dump(array_unique($array));
-
-
-//asort($array);
-//var_dump($array);
-//foreach ($array as $key => $value){
-//    echo "$key => $value<br>";
+//echo '<ul>';
+//
+//foreach ($menu as $val) {
+//
+//    echo "<li><a href=\"#\">$val</a></li>";
+//
 //}
+//echo '</ul>';
 
 
-//$a = 5;
-//$b = 10;
-//
-//echo $a + $b;
+// Урок 6: Пользовательские функции Задачи
+//Задача 1: Информация о товарах в корзине
 
 
-//$array = [1, 2, 3, 4, 'name' => 'Alex', 5, 6, 7, 8, 9, 'users' => ['Vadim', 'Alex', 'Rasul']];
+function getSummaryShoppingCart($products)
+{
+    $sumPrice = 0;
+    $sumQuantity = 0;
 
-//for ($i = 0; $i < 15; $i++)
-//    var_dump($array[$i]);
+    foreach ($products as $product) {
 
-/* может работать с ассиативными массивами
-foreach ($array as $key => $value) {
+        $sumQuantity += $product['quantity'];
 
-    var_dump($key);
-    var_dump($value);
-}*/
+        $sumPrice += $product['price'] * $product['quantity'];
 
-/*foreach ($array as $key => $value) {
-    if (is_array($value)) {
-        foreach ($value as $key => $value) {
-            ; // is_array Если мы хотим вывести массив в массиве
-            echo($value . '<br/>');
-        }
+        $result = ['sumQuantity' => $sumQuantity, 'sumPrice' => $sumPrice];
+
     }
-}*/
+    return $result;
 
-/*while ($i < 5){
-    $count = $i++;
-    var_dump ($i);
-}*/
+}
+
+$products = [['name' => 'Телевизор', 'price' => '400', 'quantity' => 1],
+['name' => 'Телефон', 'price' => '300', 'quantity' => 3],
+['name' => 'Кроссовки', 'price' => '150', 'quantity' => 2]];
+
+
+
+$result = getSummaryShoppingCart($products);
+
+echo '<pre>';
+var_dump($result);
+
+
+//Задача 2: Квадратное уравнение
+//Написать функцию, которая решает квадратное уравнение. Функция принимает 3 аргумента
+//(коефициенты) D=b^{2}-4ac.
+
+
+
+
+function getquadraticEquation($a, $b, $c)
+{
+    $d = $b^(2) - 4 * $a * $c;
+    if ($d > 0){
+        $x1 = (- $b + sqrt($d)/2 * $a);
+        $x2 = (- $b - sqrt($d)/2 * $a);
+        $result = ['x1' => $x1, 'x2' => $x2];
+        return $result;
+    }elseif ($d == 0){
+        $x1 = $x2 = - ($b / 2 * $a);
+        return $x1;
+    }else {
+        $result = 'Корней нет';
+        return $result;
+    }
+}
+
+echo '<pre>';
+var_dump(getquadraticEquation(1,26,120));
 
 ?>
